@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c2hjulabp0hax"]
+
+[ext_resource type="Script" uid="uid://dulv4i83hjkyj" path="res://UI/ui.gd" id="1_2fwl4"]
+
+[node name="UI" type="Node" unique_id=1478653623]
+script = ExtResource("1_2fwl4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1914596349]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1161268890]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "contador monedas"

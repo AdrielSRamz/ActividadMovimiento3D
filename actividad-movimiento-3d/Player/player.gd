@@ -4,10 +4,16 @@ extends Node3D
 
 @export var speed = 14
 @export var aceleracion_caida = 75
+@export var impulso_salto = 20
+@export var dash_velocidad = 50
 
 var target_velocity = Vector3.ZERO
-@export var impulso_salto = 20
 var doblesalto = true
+var dash = true
+var en_dash = false
+var final_direction = Vector3.ZERO
+var monedas = 0
+
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO
@@ -23,8 +29,14 @@ func _physics_process(delta: float) -> void:
 	
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
+		final_direction = direction
 		$CharacterBody3D/pivot.basis = Basis.looking_at(direction)
 	
+	if Input.is_action_just_pressed("dash") and dash and direction != Vector3.ZERO:
+		hacer_dash(direction)
+	if en_dash:
+		player.move_and_slide()
+		return
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed
 	
@@ -42,4 +54,25 @@ func _physics_process(delta: float) -> void:
 			target_velocity.y = impulso_salto
 	
 	
+	
 	player.move_and_slide()
+
+func hacer_dash(direction: Vector3)->void:
+	dash = false
+	en_dash = true
+	
+	player.velocity = direction * dash_velocidad
+	player.velocity.y = 0
+	
+	var dash_duration = 0.2
+	await get_tree().create_timer(dash_duration).timeout
+	
+	en_dash = false
+	
+	var dash_cooldown = 2.0
+	await get_tree().create_timer(dash_cooldown).timeout
+	
+	dash = true
+
+func aumentar_monedas():
+	monedas += 1

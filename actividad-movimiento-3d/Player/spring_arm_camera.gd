@@ -9,4 +9,3 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotation.y -= event.relative.x * sensibilidad_mouse
 		rotation.x -= event.relative.y * sensibilidad_mouse
-# Called every frame. 'delta' is the elapsed time since the previous frame.

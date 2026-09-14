@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bsqjtixyb7gre"]
 
 [ext_resource type="PackedScene" uid="uid://cq2fo83yvfrp4" path="res://Player/Player.tscn" id="1_e6wru"]
+[ext_resource type="Script" uid="uid://bekpoag2p35ac" path="res://Mundo/mundo.gd" id="1_mh57a"]
 [ext_resource type="Texture2D" uid="uid://c4qqs4cetoibf" path="res://Mundo/plataformas.tres" id="2_lhn5i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mh57a"]
@@ -15,6 +16,7 @@ uv1_triplanar = true
 uv1_world_triplanar = true
 
 [node name="Node3D" type="Node3D" unique_id=1430541452]
+script = ExtResource("1_mh57a")
 
 [node name="Player" parent="." unique_id=157615795 instance=ExtResource("1_e6wru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

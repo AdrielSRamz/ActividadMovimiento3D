@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bihplut21cssn"]
+
+[ext_resource type="Script" uid="uid://c3fy28qhxp35b" path="res://Moneda/moneda.gd" id="1_r1y8n"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jrl8c"]
+
+[node name="Moneda" type="Node3D" unique_id=1658418111]
+transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 0, 0, 0)
+script = ExtResource("1_r1y8n")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1003800509]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D" unique_id=1894300353]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=38012008]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=915821321]
+shape = SubResource("SphereShape3D_jrl8c")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
