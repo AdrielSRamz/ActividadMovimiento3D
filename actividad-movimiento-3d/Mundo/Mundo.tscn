@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bsqjtixyb7gre"]
+
+[ext_resource type="PackedScene" uid="uid://cq2fo83yvfrp4" path="res://Player/Player.tscn" id="1_e6wru"]
+[ext_resource type="Texture2D" uid="uid://c4qqs4cetoibf" path="res://Mundo/plataformas.tres" id="2_lhn5i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mh57a"]
+albedo_color = Color(1, 1, 0.09803922, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nif1u"]
+albedo_texture = ExtResource("2_lhn5i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_loagb"]
+albedo_texture = ExtResource("2_lhn5i")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="Node3D" type="Node3D" unique_id=1430541452]
+
+[node name="Player" parent="." unique_id=157615795 instance=ExtResource("1_e6wru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=177628830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.6, 0, 0, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=68151663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8393555, 0, -13.818421)
+size = Vector3(20, 1, 47)
+material = SubResource("StandardMaterial3D_mh57a")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=1955063826]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 0, -2)
+polygon = PackedVector2Array(-5, 0, -5, 3, 1, 1, 1, 0)
+depth = 3.0
+material = SubResource("StandardMaterial3D_nif1u")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=283293881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, -9.5)
+size = Vector3(4, 1, 2)
+material = SubResource("StandardMaterial3D_loagb")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1194644423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3, -13.25)
+size = Vector3(4, 1, 2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1557245161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 3, -13.25)
+size = Vector3(4, 1, 2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1695518837]
+transform = Transform3D(0.70710677, 2.1073424e-08, -0.70710677, 0.70710677, -2.1073424e-08, 0.70710677, 0, -1, -2.9802322e-08, -11, 12, 0)

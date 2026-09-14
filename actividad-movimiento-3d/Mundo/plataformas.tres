@@ -1,0 +1,4 @@
+[gd_resource type="CanvasTexture" format=3 uid="uid://c4qqs4cetoibf"]
+
+[resource]
+specular_color = Color(0.2, 0.19215687, 1, 1)

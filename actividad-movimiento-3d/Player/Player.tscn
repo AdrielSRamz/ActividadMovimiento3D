@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cq2fo83yvfrp4"]
+
+[ext_resource type="Script" uid="uid://ca7uqc667bh0g" path="res://Player/player.gd" id="1_3qydi"]
+[ext_resource type="Script" uid="uid://cnrp0wy1mxpqk" path="res://Player/spring_arm_camera.gd" id="2_q3lat"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3qydi"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_q3lat"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tok1r"]
+albedo_color = Color(0.36862746, 1, 1, 1)
+albedo_texture = SubResource("CanvasTexture_q3lat")
+metallic = 1.0
+roughness = 0.45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2ndj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qydi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3lat"]
+albedo_color = Color(1, 0.4627451, 1, 1)
+metallic_specular = 0.31
+roughness = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l2ndj"]
+
+[node name="Player" type="Node3D" unique_id=157615795]
+script = ExtResource("1_3qydi")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=832661345]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D" unique_id=1811064476]
+spring_length = 6.0
+script = ExtResource("2_q3lat")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D" unique_id=1028027059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2698412)
+
+[node name="pivot" type="Node3D" parent="CharacterBody3D" unique_id=157218524]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CharacterBody3D/pivot" unique_id=421635821]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CharacterBody3D/pivot/CSGCombiner3D" unique_id=1747218276]
+mesh = SubResource("CapsuleMesh_3qydi")
+material = SubResource("StandardMaterial3D_tok1r")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CharacterBody3D/pivot/CSGCombiner3D" unique_id=1156625936]
+transform = Transform3D(0.265, 0, 0, 0, 0.265, 0, 0, 0, 0.265, 0.15953898, 0.410717, -0.4310546)
+radial_segments = 28
+rings = 14
+material = SubResource("StandardMaterial3D_l2ndj")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CharacterBody3D/pivot/CSGCombiner3D" unique_id=331576820]
+transform = Transform3D(0.265, 0, 0, 0, 0.265, 0, 0, 0, 0.265, -0.16254222, 0.410717, -0.4310546)
+radial_segments = 28
+rings = 14
+material = SubResource("StandardMaterial3D_3qydi")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CharacterBody3D/pivot/CSGCombiner3D" unique_id=1803750699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44144085, -0.09405172, -0.4340166)
+polygon = PackedVector2Array(0.292625, 0.0069123507, 0.22045398, 0.23797166, 0.34119195, 0.13720602, 0.52712345, 0.14418948, 0.6773351, 0.25040162, 0.582222, 0.0062153935, 0.42011607, -0.08909005)
+depth = 0.07
+material = SubResource("StandardMaterial3D_q3lat")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=908181954]
+shape = SubResource("CapsuleShape3D_l2ndj")
