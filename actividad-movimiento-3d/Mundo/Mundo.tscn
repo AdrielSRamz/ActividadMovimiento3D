@@ -3,14 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://cq2fo83yvfrp4" path="res://Player/Player.tscn" id="1_e6wru"]
 [ext_resource type="Script" uid="uid://bekpoag2p35ac" path="res://Mundo/mundo.gd" id="1_mh57a"]
 [ext_resource type="Texture2D" uid="uid://c4qqs4cetoibf" path="res://Mundo/plataformas.tres" id="2_lhn5i"]
+[ext_resource type="PackedScene" uid="uid://c2hjulabp0hax" path="res://UI/ui.tscn" id="4_nif1u"]
+[ext_resource type="PackedScene" uid="uid://bihplut21cssn" path="res://Moneda/moneda.tscn" id="5_loagb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mh57a"]
 albedo_color = Color(1, 1, 0.09803922, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nif1u"]
+albedo_color = Color(0.29411766, 1, 0.3137255, 1)
 albedo_texture = ExtResource("2_lhn5i")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_loagb"]
+albedo_color = Color(1, 0.15686275, 0.23921569, 1)
 albedo_texture = ExtResource("2_lhn5i")
 uv1_triplanar = true
 uv1_world_triplanar = true
@@ -25,29 +29,89 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.6, 0, 0, 0)
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=68151663]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8393555, 0, -13.818421)
-size = Vector3(20, 1, 47)
+[node name="piso" type="CSGBox3D" parent="CSGCombiner3D" unique_id=68151663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6606445, 0, -13.818421)
+size = Vector3(35, 1, 47)
 material = SubResource("StandardMaterial3D_mh57a")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=1955063826]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 0, -2)
+[node name="pared izq" type="CSGBox3D" parent="CSGCombiner3D" unique_id=443639142]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -12.339355, 17, -13.818421)
+size = Vector3(35, 1, 47)
+material = SubResource("StandardMaterial3D_mh57a")
+
+[node name="pared der" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1367038312]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 23.660645, 17, -13.818421)
+size = Vector3(35, 1, 47)
+material = SubResource("StandardMaterial3D_mh57a")
+
+[node name="pared atras" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1220039343]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 5.6606445, 17, 9.931579)
+size = Vector3(35, 1, 37)
+material = SubResource("StandardMaterial3D_mh57a")
+
+[node name="pared del" type="CSGBox3D" parent="CSGCombiner3D" unique_id=454776089]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 5.6606445, 17, -37.56842)
+size = Vector3(35, 1, 37)
+material = SubResource("StandardMaterial3D_mh57a")
+
+[node name="rampa1" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=1955063826]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -11, 0, -2)
 polygon = PackedVector2Array(-5, 0, -5, 3, 1, 1, 1, 0)
 depth = 3.0
 material = SubResource("StandardMaterial3D_nif1u")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=283293881]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, -9.5)
+[node name="rampa 2" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=847871246]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113417e-07, 22, 15, -21.375)
+polygon = PackedVector2Array(-5, 0, -5, 3, 1, 1, 1, 0)
+depth = 3.0
+material = SubResource("StandardMaterial3D_nif1u")
+
+[node name="rampa 3" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=2117841651]
+transform = Transform3D(-2.1855693e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855696e-07, 19, 15, -11.375)
+polygon = PackedVector2Array(-5, 0, -5, 3, 1, 1, 1, 0)
+depth = 3.0
+material = SubResource("StandardMaterial3D_nif1u")
+
+[node name="piso flot" type="CSGBox3D" parent="CSGCombiner3D" unique_id=283293881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3, -9.5)
 size = Vector3(4, 1, 2)
 material = SubResource("StandardMaterial3D_loagb")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1194644423]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3, -13.25)
-size = Vector3(4, 1, 2)
+[node name="piso flot 2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1806168874]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 13, -33.875)
+size = Vector3(6, 1, 10)
+material = SubResource("StandardMaterial3D_loagb")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1557245161]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 3, -13.25)
+[node name="piso grande" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1213024706]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 13, -8.25)
+size = Vector3(6, 1, 10)
+material = SubResource("StandardMaterial3D_loagb")
+
+[node name="piso largo" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1061844007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 8, -16.5)
+size = Vector3(4, 1, 7)
+material = SubResource("StandardMaterial3D_loagb")
+
+[node name="piso flot 3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1554125538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 12, -24)
 size = Vector3(4, 1, 2)
+material = SubResource("StandardMaterial3D_loagb")
+
+[node name="piso flot 5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1901095434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 12, -14.625001)
+size = Vector3(4, 1, 2)
+material = SubResource("StandardMaterial3D_loagb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1695518837]
-transform = Transform3D(0.70710677, 2.1073424e-08, -0.70710677, 0.70710677, -2.1073424e-08, 0.70710677, 0, -1, -2.9802322e-08, -11, 12, 0)
+transform = Transform3D(-0.35355344, -0.8660254, 0.35355335, 0.84150636, -0.12940958, 0.5245191, -0.40849364, 0.48296297, 0.7745191, 2, 31, 0)
+
+[node name="UI" parent="." unique_id=1478653623 instance=ExtResource("4_nif1u")]
+
+[node name="Moneda" parent="." unique_id=1658418111 instance=ExtResource("5_loagb")]
+transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 4, 18, -13)
+
+[node name="Moneda2" parent="." unique_id=1969929988 instance=ExtResource("5_loagb")]
+transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, -5, 16, -55)
+
+[node name="Moneda3" parent="." unique_id=575154333 instance=ExtResource("5_loagb")]
+transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 21, 19, -26)

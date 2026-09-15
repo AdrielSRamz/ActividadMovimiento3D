@@ -1,11 +1,14 @@
 extends Node3D
 
 @onready var player = $CharacterBody3D
+@onready var camara = $CharacterBody3D/SpringArm3D/Camera3D
 
 @export var speed = 14
 @export var aceleracion_caida = 75
 @export var impulso_salto = 20
 @export var dash_velocidad = 50
+
+signal monedapick(cantidad)
 
 var target_velocity = Vector3.ZERO
 var doblesalto = true
@@ -14,20 +17,29 @@ var en_dash = false
 var final_direction = Vector3.ZERO
 var monedas = 0
 
+func _ready() -> void:
+	monedas = 0
+
+func _process(delta: float) -> void:
+	if monedas == 3:
+		get_tree().reload_current_scene()
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO
+	var adelante = camara.global_transform.basis.z
+	var derecha = camara.global_transform.basis.x
 	
 	if Input.is_action_pressed("adelante"):
-		direction.z -= 1
+		direction -= adelante
 	if Input.is_action_pressed("atras"):
-		direction.z += 1
+		direction += adelante
 	if Input.is_action_pressed("derecha"):
-		direction.x += 1
+		direction += derecha
 	if Input.is_action_pressed("izquierda"):
-		direction.x -= 1
+		direction -= derecha
 	
 	if direction != Vector3.ZERO:
+		direction.y = 0
 		direction = direction.normalized()
 		final_direction = direction
 		$CharacterBody3D/pivot.basis = Basis.looking_at(direction)
@@ -76,3 +88,4 @@ func hacer_dash(direction: Vector3)->void:
 
 func aumentar_monedas():
 	monedas += 1
+	monedapick.emit(monedas)
