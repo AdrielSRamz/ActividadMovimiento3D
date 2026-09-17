@@ -7,6 +7,8 @@ extends Node3D
 @export var aceleracion_caida = 75
 @export var impulso_salto = 20
 @export var dash_velocidad = 50
+@export var slide_speed = 15.0
+@export var min_tilt_slide = 20.0
 
 signal monedapick(cantidad)
 
@@ -65,7 +67,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("salto"):
 			target_velocity.y = impulso_salto
 	
-	
+		slide(delta)
 	
 	player.move_and_slide()
 
@@ -89,3 +91,17 @@ func hacer_dash(direction: Vector3)->void:
 func aumentar_monedas():
 	monedas += 1
 	monedapick.emit(monedas)
+
+func slide(delta: float) -> void:
+	if not player.is_on_floor():
+		return
+	
+	
+	var normal_suelo = player.get_floor_normal()
+	var angulo = rad_to_deg(acos(normal_suelo.dot(Vector3.UP)))
+	
+	if angulo >= min_tilt_slide:
+		var direccion_caida = Vector3.DOWN.slide(normal_suelo).normalized()
+		
+		target_velocity.x = direccion_caida.x * slide_speed * delta
+		target_velocity.z = direccion_caida.z * slide_speed * delta

@@ -56,7 +56,7 @@ material = SubResource("StandardMaterial3D_mh57a")
 
 [node name="rampa1" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=1955063826]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -11, 0, -2)
-polygon = PackedVector2Array(-5, 0, -5, 3, 1, 1, 1, 0)
+polygon = PackedVector2Array(-5, 0, -5, 6, 1, 1, 1, 0)
 depth = 3.0
 material = SubResource("StandardMaterial3D_nif1u")
 
